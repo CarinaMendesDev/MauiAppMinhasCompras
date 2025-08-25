@@ -1,6 +1,7 @@
 # 🛒 App de Compras - .NET MAUI + SQLite
 
-Este projeto esta sendo desenvolvido na aula de DS do curso Técnico em Desenvolvimento de Sistemas, é um **aplicativo de compras** desenvolvido em **.NET MAUI**, com persistência de dados utilizando **SQLite**.  
+Este projeto está sendo desenvolvido na aula de DS do curso Técnico em Desenvolvimento de Sistemas Modulo III.  
+É um **aplicativo de compras** em **.NET MAUI**, com persistência de dados utilizando **SQLite**.  
 O objetivo é criar uma solução prática e interativa para gerenciar produtos, permitindo inserir, visualizar, atualizar e excluir informações de forma simples e eficiente.
 
 ---
@@ -17,18 +18,73 @@ O objetivo é criar uma solução prática e interativa para gerenciar produtos,
 
 ---
 
-## 📅 Etapas atuais do desenvolvimento
-1. **Base do aplicativo** implementada com integração ao banco SQLite.
-2. Criação da **tela de listagem de produtos**, conectada ao banco de dados.
-3. Implementação das operações de **Leitura (Read)** e **Inserção (Create)**.
-4. Próximas etapas:
-   - Finalizar as operações de **Atualização (Update)** e **Exclusão (Delete)**.
-   - Melhorar a interface e experiência do usuário.
+## 📅 Andamento do Desenvolvimento
+
+### ✅ Agenda 1 — Fundamentos, SQLite e Estrutura do Projeto
+- Estudo sobre **persistência de dados em aplicativos móveis**.  
+- Introdução ao conceito de **CRUD (Create, Read, Update, Delete)**.  
+- Configuração do **SQLite no .NET MAUI** com o pacote `sqlite-net-pcl`.
+- Criação da base do aplicativo em **.NET MAUI**: Organização inicial do projeto em **Models, Views e Helpers**.  
+- Criação do modelo `Produto` com os campos principais (descrição, quantidade e preço).
+
+---
+
+### ✅ Agenda 2 — Classe de Acesso ao Banco de Dados (Helpers/SQLiteDatabaseHelper)
+- Estruturação da pasta **Helpers** e criação da classe `SQLiteDatabaseHelper`.
+- Implementação da **conexão assíncrona** com SQLite (`SQLiteAsyncConnection`), garantindo a criação da tabela `Produto`.  
+- Desenvolvimento dos métodos principais do **CRUD**:
+  - `Insert` → insere novos produtos.  
+  - `GetAll` → retorna todos os registros da tabela.  
+  - `Update` → atualiza os dados de um produto existente.  
+  - `Delete` → exclui um produto pelo Id.  
+  - `Search` → busca produtos pela descrição utilizando **SQL LIKE**.  
+- Organização do código para garantir **reaproveitamento, centralização e segurança** na manipulação do banco.  
+
+---
+
+### ✅ Agenda 3 — Estrutura Principal do App, Navegação e Cadastro de Produtos
+
+- **App.xaml.cs**  
+  - Implementação do **padrão Singleton** para o `SQLiteDatabaseHelper`, garantindo apenas uma instância do banco durante toda a execução do app.  
+  - Uso de `Path.Combine` + `Environment.GetFolderPath` para definir corretamente o caminho do banco no dispositivo.  
+  - Alteração da tela inicial: agora o app abre em **ListaProduto**, encapsulada em um `NavigationPage` (necessário para permitir navegação entre telas).  
+
+- **ListaProduto.xaml / ListaProduto.cs**  
+  - Página configurada com **ToolbarItems**:  
+    - **Somar** (ainda sem lógica).  
+    - **Adicionar** → abre a página de cadastro (`NovoProduto`) via `Navigation.PushAsync`.  
+  - Estrutura inicial da tela de listagem de produtos.  
+
+- **NovoProduto.xaml / NovoProduto.cs**  
+  - Criação de formulário simples para cadastro:  
+    - Campos de **Descrição**, **Quantidade** e **Preço Unitário**.  
+    - Teclado numérico configurado para entrada de valores.  
+  - Toolbar com botão **Salvar**, que:  
+    - Cria um objeto `Produto` com os valores digitados.  
+    - Insere no banco de dados via `App.Db.Insert(p)`.  
+    - Exibe mensagens de sucesso ou erro com `DisplayAlert`.  
+
+📌 **Resumo:**  
+Na Agenda 3 consolidamos o núcleo do app:  
+- Implementação do **padrão Singleton** para garantir uma única instância do banco de dados em toda a aplicação.  
+- Definição da **página inicial com navegação** entre telas. 
+- Criação da tela de **lista de produtos** e da tela de **cadastro de novo produto**. 
+- Implementação do **formulário de inserção** e da lógica para salvar produtos no banco.  
+
+---
+
+## 🚀 Próximas Etapas
+- Finalizar as operações de **atualização (Update)** e **exclusão (Delete)** de produtos pela interface.  
+- Implementar a **listagem com binding** (exibição em `CollectionView` ou similar).  
+- Criar recursos de **busca e filtros** para os produtos cadastrados.  
+- Melhorar a **experiência do usuário (UX/UI)** com validações, mensagens mais intuitivas e design refinado.  
+- Criar **relatórios e cálculos automáticos**, como soma de valores totais da lista.  
+- Implementar **testes básicos** para validar as principais funcionalidades.  
 
 ---
 
 ## 🛠 Tecnologias Utilizadas
-- **.NET MAUI** — Framework multiplataforma para criação de aplicativos nativos.
-- **C#** — Linguagem principal para desenvolvimento.
-- **SQLite** — Banco de dados local para persistência de informações.
-- **MVVM** — Padrão de arquitetura para separação de responsabilidades.
+- **.NET MAUI** — Framework multiplataforma para criação de aplicativos nativos.  
+- **C#** — Linguagem principal para desenvolvimento.  
+- **SQLite** — Banco de dados local para persistência de informações.  
+- **MVVM** — Padrão de arquitetura para separação de responsabilidades.  
