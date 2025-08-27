@@ -73,6 +73,31 @@ Na Agenda 3 consolidamos o núcleo do app:
 
 ---
 
+### ✅ Agenda 4 — Recuperação de Dados, Busca Instantânea e Listagem Dinâmica
+
+- **SearchBar** para **busca em tempo real**:  
+  - Evento `TextChanged` para filtrar produtos conforme o usuário digita.  
+  - Uso de `Placeholder` para guiar o usuário.  
+
+- **ListView** para exibir produtos do banco:  
+  - `ItemsSource` vinculado ao SQLite.  
+  - Suporte a **ItemSelected** e **ContextActions** (editar, excluir).  
+
+- **ObservableCollection** integrada ao ListView:  
+  - Interface atualizada automaticamente ao **adicionar, remover ou modificar** produtos.  
+  - Dispensa atualização manual do `ItemsSource`.  
+
+- **OnAppearing()**:  
+  - Recarrega dados sempre que a tela de listagem é exibida.  
+  - Garante consistência após navegar entre telas.  
+
+📌 **Resumo:**  
+- 🔎 **Busca instantânea** com `SearchBar`.  
+- 📋 **Listagem dinâmica** atualizada em tempo real.  
+- ⚡ **Integração com ciclo de vida** usando `OnAppearing()`.  
+
+---
+
 ## 🚀 Próximas Etapas
 - Finalizar as operações de **atualização (Update)** e **exclusão (Delete)** de produtos pela interface.  
 - Implementar a **listagem com binding** (exibição em `CollectionView` ou similar).  
