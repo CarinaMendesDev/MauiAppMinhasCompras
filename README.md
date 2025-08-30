@@ -75,26 +75,36 @@ Na Agenda 3 consolidamos o núcleo do app:
 
 ### ✅ Agenda 4 — Recuperação de Dados, Busca Instantânea e Listagem Dinâmica
 
-- **SearchBar** para **busca em tempo real**:  
-  - Evento `TextChanged` para filtrar produtos conforme o usuário digita.  
-  - Uso de `Placeholder` para guiar o usuário.  
+### 📄 **ListaProduto.xaml**
+- **SearchBar para busca em tempo real**  
+  - Evento `TextChanged` filtra produtos enquanto o usuário digita.  
+  - `Placeholder` orienta o usuário sobre o que buscar.  
+- **ListView para exibir produtos do banco**  
+  - `ItemsSource` vinculado ao resultado da busca ou à lista completa.  
+  - Suporte a **ContextActions** (ex.: remover item) para interação direta.  
+  - Cabeçalho configurado com `Grid` para organizar ID, Descrição, Preço, Quantidade e Total.
 
-- **ListView** para exibir produtos do banco:  
-  - `ItemsSource` vinculado ao SQLite.  
-  - Suporte a **ItemSelected** e **ContextActions** (editar, excluir).  
+---
 
-- **ObservableCollection** integrada ao ListView:  
-  - Interface atualizada automaticamente ao **adicionar, remover ou modificar** produtos.  
-  - Dispensa atualização manual do `ItemsSource`.  
+### 💻 **ListaProduto.cs**
+- **Uso de `ObservableCollection<Produto>`**  
+  - Atualiza a interface automaticamente sem precisar recarregar o `ItemsSource`.  
+  - Reage às alterações (inserção, exclusão, busca) em tempo real.  
+- **Método `OnAppearing()` sobrescrito**  
+  - Recarrega os produtos sempre que a tela volta a ser exibida.  
+  - Garante consistência após adição ou edição de itens.  
+- **Implementação da busca**  
+  - `txt_search_TextChanged` limpa e repopula a lista conforme o texto digitado.  
+- **Função de somatório**  
+  - Botão na Toolbar que calcula e exibe o valor total de todos os produtos.
 
-- **OnAppearing()**:  
-  - Recarrega dados sempre que a tela de listagem é exibida.  
-  - Garante consistência após navegar entre telas.  
+---
 
-📌 **Resumo:**  
+### 📌 **Resumo Geral**
 - 🔎 **Busca instantânea** com `SearchBar`.  
-- 📋 **Listagem dinâmica** atualizada em tempo real.  
-- ⚡ **Integração com ciclo de vida** usando `OnAppearing()`.  
+- 📋 **Listagem dinâmica e reativa** com `ObservableCollection`.  
+- 🔄 **Ciclo de vida integrado** usando `OnAppearing()` para manter os dados sempre atualizados.  
+- 💰 **Cálculo automático de totais**, facilitando o controle de compras.
 
 ---
 
