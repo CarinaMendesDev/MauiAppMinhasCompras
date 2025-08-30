@@ -75,18 +75,16 @@ Na Agenda 3 consolidamos o núcleo do app:
 
 ### ✅ Agenda 4 — Recuperação de Dados, Busca Instantânea e Listagem Dinâmica
 
-### 📄 **ListaProduto.xaml**
-- **SearchBar para busca em tempo real**  
+- **ListaProduto.xaml**
+- **SearchBar para busca em tempo real**
   - Evento `TextChanged` filtra produtos enquanto o usuário digita.  
   - `Placeholder` orienta o usuário sobre o que buscar.  
-- **ListView para exibir produtos do banco**  
+- **ListView para exibir produtos do banco**
   - `ItemsSource` vinculado ao resultado da busca ou à lista completa.  
   - Suporte a **ContextActions** (ex.: remover item) para interação direta.  
   - Cabeçalho configurado com `Grid` para organizar ID, Descrição, Preço, Quantidade e Total.
 
----
-
-### 💻 **ListaProduto.cs**
+- **ListaProduto.cs**
 - **Uso de `ObservableCollection<Produto>`**  
   - Atualiza a interface automaticamente sem precisar recarregar o `ItemsSource`.  
   - Reage às alterações (inserção, exclusão, busca) em tempo real.  
@@ -98,9 +96,7 @@ Na Agenda 3 consolidamos o núcleo do app:
 - **Função de somatório**  
   - Botão na Toolbar que calcula e exibe o valor total de todos os produtos.
 
----
-
-### 📌 **Resumo Geral**
+📌 **Resumo Geral**
 - 🔎 **Busca instantânea** com `SearchBar`.  
 - 📋 **Listagem dinâmica e reativa** com `ObservableCollection`.  
 - 🔄 **Ciclo de vida integrado** usando `OnAppearing()` para manter os dados sempre atualizados.  
