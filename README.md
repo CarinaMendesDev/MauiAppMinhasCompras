@@ -1,20 +1,25 @@
 # 🛒 App de Compras - .NET MAUI + SQLite
 
-Este projeto está sendo desenvolvido na aula de DS do curso Técnico em Desenvolvimento de Sistemas Modulo III.  
-É um **aplicativo de compras** em **.NET MAUI**, com persistência de dados utilizando **SQLite**.  
-O objetivo é criar uma solução prática e interativa para gerenciar produtos, permitindo inserir, visualizar, atualizar e excluir informações de forma simples e eficiente.
+Este projeto está sendo desenvolvido nas aulas de **Desenvolvimento de Sistemas (DS) - Módulo III**.  
+Trata-se de um **aplicativo de compras** desenvolvido em **.NET MAUI**, com persistência de dados utilizando **SQLite**.  
+📌 **Objetivo:** Criar uma solução prática e interativa para gerenciar produtos, permitindo **inserir, visualizar, atualizar e excluir** informações de forma simples e eficiente.  
 
 ---
 
 ## 📌 Funcionalidades
-- **Persistência de dados com SQLite** garantindo que as informações sejam salvas localmente.
-- **Listagem de produtos** de forma dinâmica, exibindo os itens cadastrados no banco.
-- **CRUD completo (Create, Read, Update, Delete)**:
-  - **Create** → Inserir novos produtos.
-  - **Read** → Visualizar a lista de produtos cadastrados.
-  - **Update** → Editar informações de produtos existentes.
-  - **Delete** → Remover produtos.
-- Interface simples e responsiva, pensada para o usuário final.
+- **Persistência de dados com SQLite** garantindo que as informações sejam salvas localmente.  
+- **Listagem de produtos dinâmica** vinculada ao banco de dados.  
+- **CRUD completo (Create, Read, Update, Delete):**  
+  - **Create** → Inserir novos produtos através de formulário.  
+  - **Read** → Visualizar a lista de produtos cadastrados.  
+  - **Update** → Editar informações de produtos existentes.  
+  - **Delete** → Remover produtos com confirmação.  
+- **Busca instantânea com SearchBar** para localizar produtos em tempo real.  
+- **Navegação entre telas com BindingContext**, permitindo visualizar e editar itens selecionados.  
+- **Menus de Contexto (ContextActions)** na listagem, possibilitando editar ou excluir produtos rapidamente.  
+- **Confirmações e alertas com DisplayAlert**, garantindo interações seguras com o usuário.  
+- **Tratamento de exceções (try-catch)** para evitar falhas e exibir mensagens amigáveis.  
+- Interface **simples, responsiva e intuitiva**, pensada para o usuário final.  
 
 ---
 
@@ -26,7 +31,10 @@ O objetivo é criar uma solução prática e interativa para gerenciar produtos,
 - Configuração do **SQLite no .NET MAUI** com o pacote `sqlite-net-pcl`.
 - Criação da base do aplicativo em **.NET MAUI**: Organização inicial do projeto em **Models, Views e Helpers**.  
 - Criação do modelo `Produto` com os campos principais (descrição, quantidade e preço).
-
+📌 **Resumo:**  
+- Introdução ao CRUD e persistência de dados em aplicativos móveis.  
+- Criação do modelo Produto e organização inicial do projeto.
+  
 ---
 
 ### ✅ Agenda 2 — Classe de Acesso ao Banco de Dados (Helpers/SQLiteDatabaseHelper)
@@ -39,7 +47,11 @@ O objetivo é criar uma solução prática e interativa para gerenciar produtos,
   - `Delete` → exclui um produto pelo Id.  
   - `Search` → busca produtos pela descrição utilizando **SQL LIKE**.  
 - Organização do código para garantir **reaproveitamento, centralização e segurança** na manipulação do banco.  
-
+📌 **Resumo:**  
+- Conexão assíncrona com SQLite.  
+- Métodos principais do CRUD implementados.  
+- Código organizado para reaproveitamento e segurança.
+  
 ---
 
 ### ✅ Agenda 3 — Estrutura Principal do App, Navegação e Cadastro de Produtos
@@ -96,7 +108,7 @@ Na Agenda 3 consolidamos o núcleo do app:
 - **Função de somatório**  
   - Botão na Toolbar que calcula e exibe o valor total de todos os produtos.
 
-📌 **Resumo Geral**
+📌 **Resumo:**
 - 🔎 **Busca instantânea** com `SearchBar`.  
 - 📋 **Listagem dinâmica e reativa** com `ObservableCollection`.  
 - 🔄 **Ciclo de vida integrado** usando `OnAppearing()` para manter os dados sempre atualizados.  
@@ -104,13 +116,49 @@ Na Agenda 3 consolidamos o núcleo do app:
 
 ---
 
+### ✅ Agenda 5 — Navegação, ContextActions e Edição de Produtos  
+
+**Navegação a partir de itens da ListView**  
+- Uso do evento `ItemSelected` para detectar seleção de produtos.  
+- Passagem de dados entre telas via **BindingContext**.  
+- Exibição e edição de detalhes do produto selecionado.  
+
+**Menu de Contexto (ContextActions)**  
+- Inclusão de **menus de contexto** na ListView (`MenuItem`).  
+- Ações como **Editar** e **Excluir** diretamente na lista.  
+- Uso de `IsDestructive="True"` para destacar ações críticas (ex: excluir).  
+
+**Confirmações com DisplayAlert**  
+- Mensagens de confirmação antes de exclusões.  
+- Caixas de diálogo assíncronas com `await`.  
+
+**Tratamento de Exceções (try-catch)**  
+- Evita falhas em operações com o banco.  
+- Exibe alertas amigáveis ao usuário em caso de erro.  
+
+**Método EditarProduto**  
+- Acessado via menu de contexto ou botão.  
+- Atualiza os dados do produto no SQLite com `Update(p)`.  
+- Exibe mensagem de sucesso após a atualização.  
+- Retorna à listagem com `Navigation.PopAsync()`.  
+- Encapsulado em `try-catch` para maior robustez.  
+
+📌 **Resumo:**  
+- Navegação entre telas com passagem de dados.  
+- Menus de contexto adicionados à ListView.  
+- Edição e exclusão de produtos implementadas.  
+- Uso de tratamento de erros e confirmações.  
+
+---
+
 ## 🚀 Próximas Etapas
-- Finalizar as operações de **atualização (Update)** e **exclusão (Delete)** de produtos pela interface.  
-- Implementar a **listagem com binding** (exibição em `CollectionView` ou similar).  
-- Criar recursos de **busca e filtros** para os produtos cadastrados.  
-- Melhorar a **experiência do usuário (UX/UI)** com validações, mensagens mais intuitivas e design refinado.  
-- Criar **relatórios e cálculos automáticos**, como soma de valores totais da lista.  
-- Implementar **testes básicos** para validar as principais funcionalidades.  
+- Refinar o **design e a experiência do usuário (UI/UX)** com cores, ícones, validações de formulários e mensagens mais intuitivas.  
+- Migrar a listagem de produtos do **ListView para CollectionView**, garantindo melhor performance e flexibilidade.  
+- Implementar **soma total de valores** (quantidade x preço) exibida na tela de listagem.  
+- Adicionar **filtros e ordenação** para organizar os produtos (ex.: por preço, quantidade ou nome).  
+- Criar **relatórios e exportação de dados** (ex.: PDF, Excel ou compartilhamento via WhatsApp).  
+- Evoluir para **sincronização com API online** (opcional, para acesso em múltiplos dispositivos).  
+- Implementar **testes automatizados** para validar as principais funcionalidades do app.  
 
 ---
 
