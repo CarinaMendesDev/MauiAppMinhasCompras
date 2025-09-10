@@ -9,7 +9,7 @@ Trata-se de um **aplicativo de compras** desenvolvido em **.NET MAUI**, com pers
 ## 📌 Funcionalidades
 - **Persistência de dados com SQLite** garantindo que as informações sejam salvas localmente.  
 - **Listagem de produtos dinâmica** vinculada ao banco de dados.  
-- **CRUD completo (Create, Read, Update, Delete):**  
+- **CRUD completo (Create, Read, Update, Delete):**
   - **Create** → Inserir novos produtos através de formulário.  
   - **Read** → Visualizar a lista de produtos cadastrados.  
   - **Update** → Editar informações de produtos existentes.  
@@ -17,8 +17,9 @@ Trata-se de um **aplicativo de compras** desenvolvido em **.NET MAUI**, com pers
 - **Busca instantânea com SearchBar** para localizar produtos em tempo real.  
 - **Navegação entre telas com BindingContext**, permitindo visualizar e editar itens selecionados.  
 - **Menus de Contexto (ContextActions)** na listagem, possibilitando editar ou excluir produtos rapidamente.  
-- **Confirmações e alertas com DisplayAlert**, garantindo interações seguras com o usuário.  
-- **Tratamento de exceções (try-catch)** para evitar falhas e exibir mensagens amigáveis.  
+- **Pull to Refresh** com `RefreshView` para atualizar a lista de produtos puxando para baixo.  
+- **Regionalização** com `CurrentCulture` e `CurrentUICulture`, exibindo moeda no padrão **R$** e datas no formato **dd/MM/yyyy**.  
+- **Splash Screen e Ícone personalizados** para melhor identidade visual do app.  
 - Interface **simples, responsiva e intuitiva**, pensada para o usuário final.  
 
 ---
@@ -151,14 +152,37 @@ Na Agenda 3 consolidamos o núcleo do app:
 
 ---
 
+### ✅ Agenda 6 — Regionalização, Pull to Refresh e Ajustes Visuais
+
+**Regionalização do App**
+- Configuração de `CultureInfo.DefaultThreadCurrentCulture` e `CultureInfo.DefaultThreadCurrentUICulture` para "pt-BR".  
+- Exibição de valores monetários no padrão brasileiro (ex.: **R$ 1.234,56**).  
+- Datas formatadas no padrão `dd/MM/yyyy`.  
+
+**Pull to Refresh**
+- Substituição da `ListView` para estar dentro de um `RefreshView`.  
+- Implementação do evento `Refreshing` no code-behind para recarregar os produtos do SQLite.  
+- Uso de `IsRefreshing = false` ao final do processo para parar a animação de atualização.  
+
+**Ajustes Visuais**
+- Configuração do **ícone do aplicativo** via `<MauiIcon Include="Resources/appicon.svg" />`.  
+- Configuração da **Splash Screen** no `.csproj` ou via `MauiProgram.cs`.  
+- Melhorias no layout e na apresentação dos valores (uso do formato `:C` para moeda).  
+
+📌 **Resumo:**  
+- Regionalização implementada para exibição correta de moeda e datas.  
+- Funcionalidade de atualização manual da lista adicionada com `RefreshView`.  
+- Ícone e splash screen configurados, deixando o app com aparência mais profissional.  
+
+---
+
 ## 🚀 Próximas Etapas
-- Refinar o **design e a experiência do usuário (UI/UX)** com cores, ícones, validações de formulários e mensagens mais intuitivas.  
-- Migrar a listagem de produtos do **ListView para CollectionView**, garantindo melhor performance e flexibilidade.  
-- Implementar **soma total de valores** (quantidade x preço) exibida na tela de listagem.  
-- Adicionar **filtros e ordenação** para organizar os produtos (ex.: por preço, quantidade ou nome).  
-- Criar **relatórios e exportação de dados** (ex.: PDF, Excel ou compartilhamento via WhatsApp).  
-- Evoluir para **sincronização com API online** (opcional, para acesso em múltiplos dispositivos).  
-- Implementar **testes automatizados** para validar as principais funcionalidades do app.  
+- Otimizar o **design** aplicando temas e estilos globais para consistência visual.  
+- Adicionar **validações de entrada de dados** para evitar erros de cadastro.  
+- Implementar **paginação ou rolagem infinita** para listas maiores.  
+- Evoluir para **CollectionView**, obtendo melhor performance em relação ao ListView.  
+- Adicionar **relatórios e exportação de dados** (PDF, Excel, etc.).  
+- Explorar **publicação do app** nas lojas (Google Play e Microsoft Store).  
 
 ---
 
