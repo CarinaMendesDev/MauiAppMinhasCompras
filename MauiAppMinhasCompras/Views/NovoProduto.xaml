@@ -4,17 +4,24 @@
              x:Class="MauiAppMinhasCompras.Views.NovoProduto"
              Title="Novo Produto">
 
+    <!-- Agenda 03 – Toolbar :Barra superior com botão de ação -->
     <ContentPage.ToolbarItems>
+        <!-- Botão salvar produto: chama evento no code-behind -->
         <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
 
+    <!-- Agenda 03 – Estrutura do formulário: VerticalStackLayout organiza os elementos em coluna -->
     <VerticalStackLayout Spacing="10" Padding="10">
+
+        <!-- Campo de descrição do produto -->
         <Label Text="Descrição do Produto" />
         <Entry x:Name="txt_descricao" />
 
-        <Label Text="Quatidade:" />
+        <!-- Campo de quantidade (entrada numérica) -->
+        <Label Text="Quantidade:" />
         <Entry x:Name="txt_quantidade" Keyboard="Numeric" />
 
+        <!-- Campo de preço unitário (entrada numérica) -->
         <Label Text="Preço Unitário:" />
         <Entry x:Name="txt_preco" Keyboard="Numeric" />
 

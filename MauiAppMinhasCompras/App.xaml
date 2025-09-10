@@ -3,12 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiAppMinhasCompras"
              x:Class="MauiAppMinhasCompras.App">
+
+    <!-- Agenda 01 – Estrutura Inicial do Projeto -->
+    <!-- Este é o App.xaml: arquivo raiz que define recursos globais (cores, estilos, etc.)
+         que serão compartilhados por todas as páginas do app. -->
+
     <Application.Resources>
         <ResourceDictionary>
+
+            <!-- Agenda 01 – Estilos e Cores Globais -->
+            <!-- Importa os arquivos de dicionário de recursos (cores e estilos)
+                 para manter uma identidade visual consistente no app. -->
+
             <ResourceDictionary.MergedDictionaries>
+                <!-- Paleta de cores usada em todo o aplicativo -->
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+
+                <!-- Estilos de fontes, botões, labels e outros componentes -->
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

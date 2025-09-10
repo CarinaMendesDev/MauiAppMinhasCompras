@@ -4,17 +4,25 @@
              x:Class="MauiAppMinhasCompras.Views.ListaProduto"
              Title="Minhas Compras">
 
+    <!-- Agenda 03 – Estrutura principal do app : Definição da página de listagem de produtos como tela inicial -->
     <ContentPage.ToolbarItems>
+        <!-- Botão "Somar" -->
         <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
+
+        <!-- Botão "Adicionar" abre a tela de cadastro de produtos -->
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <VerticalStackLayout>
+        <!-- Agenda 04 – Busca Instantânea: SearchBar para digitar termos e filtrar produtos dinamicamente -->
         <SearchBar x:Name="txt_search" 
                    Placeholder="Busca de Produtos"
                    TextChanged="txt_search_TextChanged"/>
 
+        <!-- Lista de Produtos -->
         <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
+
+            <!-- Cabeçalho da tabela (nomes das colunas) -->
             <ListView.Header>
                 <Grid ColumnDefinitions="*,*,*,*,*">
                     <Label Grid.Column="0" Text="ID" />
@@ -24,12 +32,18 @@
                     <Label Grid.Column="4" Text="Total" />
                 </Grid>
             </ListView.Header>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <!-- Menu de contexto para excluir produto direto da lista -->
                         <ViewCell.ContextActions>
-                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked" IsDestructive="True" />
+                            <MenuItem Text="Remover" 
+                                      Clicked="MenuItem_Clicked" 
+                                      IsDestructive="True" />
                         </ViewCell.ContextActions>
+
+                        <!-- Exibição das propriedades do produto em colunas -->
                         <Grid ColumnDefinitions="*,*,*,*,*">
                             <Label Grid.Column="0" Text="{Binding Id}" />
                             <Label Grid.Column="1" Text="{Binding Descricao}" />

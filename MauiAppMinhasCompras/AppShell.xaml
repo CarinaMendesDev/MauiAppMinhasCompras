@@ -7,9 +7,16 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MauiAppMinhasCompras">
 
+    <!-- Agenda 01 – Estrutura Inicial do Projeto -->
+    <!-- O Shell define a estrutura de navegação de alto nível do app.
+         Aqui desabilitamos o Flyout (menu lateral) para simplificar. -->
+
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <!-- Agenda 01 – Tela Inicial com Shell -->
+    <!-- Define que a MainPage é o conteúdo inicial do app.
+             O "Route" é usado para navegação entre páginas com GoToAsync(). -->
 
 </Shell>

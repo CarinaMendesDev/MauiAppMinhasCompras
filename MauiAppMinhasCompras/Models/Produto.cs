@@ -7,28 +7,40 @@ using SQLite;
 
 namespace MauiAppMinhasCompras.Models
 {
+    // Representa um Produto no aplicativo: Visto na Agenda 1
     public class Produto
     {
+        // armazenar a descrição do produto: Visto na Agenda 1
         string _descricao;
 
+        // Representa chave primária do banco de dados: Visto Agenda 1
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Descricao { 
-            get => _descricao; 
+
+        // Propriedade Descricao do produto com "getter" e "setter": Visto Agenda 3 — Cadastro de Produto
+        public string Descricao
+        {
+            get => _descricao;
             set
             {
-                if(value == null)
+                // Validação: se a descrição for nula, lança uma exceção
+                if (value == null)
                 {
                     throw new Exception("Por favor, preencher a descrição");
                 }
 
-                _descricao = value;
-
-            } 
-
+                 _descricao = value;
+            }
         }
+
+        // Quantidade do produto: Agenda 1 (campos principais do modelo Produto)
         public double Quantidade { get; set; }
+
+        // Preço unitário do produto: Agenda 1 (campos principais do modelo Produto)
         public double Preco { get; set; }
+
+        // Propriedade calculada: retorna o valor total do produto (Quantidade x Preço)
+        // Essa lógica foi aplicada na Agenda 4 — somatório e manipulação de interface
         public double Total { get => Quantidade * Preco; }
     }
 }

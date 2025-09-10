@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+Views (Agenda 05 – Interface e Funcionalidades CRUD)
+Este arquivo define a tela de edição de um produto (EditarProduto).
+Nele temos os campos para editar descrição, quantidade e preço, além de um botão de salvar.
+-->
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppMinhasCompras.Views.EditarProduto"
              Title="{Binding Descricao}">
 
-     <ContentPage.ToolbarItems>
-            <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
-     </ContentPage.ToolbarItems>
+    <!-- Barra de ferramentas superior com a opção de salvar -->
+    <ContentPage.ToolbarItems>
+        <!-- Botão que chama o evento ToolbarItem_Clicked no code-behind -->
+        <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
 
+    <!-- Layout vertical que organiza os elementos da tela com espaçamento e margem -->
     <VerticalStackLayout Spacing="10" Padding="10">
+
+        <!-- Campo de entrada da descrição do produto -->
         <Label Text="Descrição do Produto" />
         <Entry x:Name="txt_descricao" Text="{Binding Descricao}" />
 
+        <!-- Campo de entrada da quantidade do produto -->
         <Label Text="Quatidade:" />
         <Entry x:Name="txt_quantidade" Text="{Binding Quantidade}" Keyboard="Numeric" />
 
+        <!-- Campo de entrada do preço do produto -->
         <Label Text="Preço Unitário:" />
         <Entry x:Name="txt_preco" Text="{Binding Preco}"  Keyboard="Numeric" />
 
