@@ -17,6 +17,9 @@
         <Label Text="Descrição do Produto" />
         <Entry x:Name="txt_descricao" />
 
+        <Label Text="Categoria do Produto" />
+        <Entry x:Name="txt_categoria" />
+
         <!-- Campo de quantidade (entrada numérica) -->
         <Label Text="Quantidade:" />
         <Entry x:Name="txt_quantidade" Keyboard="Numeric" />

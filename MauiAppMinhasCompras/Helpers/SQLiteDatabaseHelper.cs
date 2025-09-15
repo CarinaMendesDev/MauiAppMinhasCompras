@@ -29,13 +29,11 @@ namespace MauiAppMinhasCompras.Helpers
         }
 
         // Agenda 2 — CRUD (Update): atualizar os dados de um produto
-        // Modificado/Utilizado Agenda 5 — Edição de Produtos
-        public Task<List<Produto>> Update(Produto p)
+        // Corrigido para usar ExecuteAsync ao invés de QueryAsync
+        public Task<int> Update(Produto p)
         {
-            string sql = "UPDATE Produto SET Descricao=?, Quantidade=?, Preco=? WHERE Id=?";
-            return _conn.QueryAsync<Produto>(
-                sql, p.Descricao, p.Quantidade, p.Preco, p.Id
-            );
+            string sql = "UPDATE Produto SET Descricao=?, Categoria=?, Quantidade=?, Preco=? WHERE Id=?";
+            return _conn.ExecuteAsync(sql, p.Descricao, p.Categoria, p.Quantidade, p.Preco, p.Id);
         }
 
         // Agenda 2 — CRUD (Delete): excluir um produto pelo Id
@@ -56,7 +54,7 @@ namespace MauiAppMinhasCompras.Helpers
         // Expandido na Agenda 4 — Busca Instantânea com SearchBar
         public Task<List<Produto>> Search(string q)
         {
-            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q + "%'";
+            string sql = "SELECT * FROM Produto WHERE Descricao LIKE '%" + q + "%'";
             return _conn.QueryAsync<Produto>(sql);
         }
     }

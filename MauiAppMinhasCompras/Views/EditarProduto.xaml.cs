@@ -24,10 +24,11 @@ public partial class EditarProduto : ContentPage
             // Cria um novo objeto Produto com os valores editados na tela
             Produto p = new Produto
             {
-                Id = produto_anexado.Id, // mantém o mesmo Id para atualizar
-                Descricao = txt_descricao.Text, // pega o texto digitado na descrição
-                Quantidade = Convert.ToDouble(txt_quantidade.Text), // converte quantidade
-                Preco = Convert.ToDouble(txt_preco.Text) // converte preço
+                Id = produto_anexado.Id,
+                Descricao = txt_descricao.Text, // usa Descricao para o campo de descrição
+                Categoria = txt_categoria.Text, // usa Categoria para o campo de categoria
+                Quantidade = Convert.ToDouble(txt_quantidade.Text),
+                Preco = Convert.ToDouble(txt_preco.Text)
             };
 
             // Chama o método Update da classe de banco de dados (SQLiteDatabaseHelper)

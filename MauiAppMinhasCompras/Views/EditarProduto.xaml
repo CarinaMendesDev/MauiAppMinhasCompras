@@ -23,6 +23,9 @@ Nele temos os campos para editar descrição, quantidade e preço, além de um b
         <Label Text="Descrição do Produto" />
         <Entry x:Name="txt_descricao" Text="{Binding Descricao}" />
 
+        <Label Text="Categoria" />
+        <Entry x:Name="txt_categoria" Text="{Binding Categoria}" />
+
         <!-- Campo de entrada da quantidade do produto -->
         <Label Text="Quatidade:" />
         <Entry x:Name="txt_quantidade" Text="{Binding Quantidade}" Keyboard="Numeric" />

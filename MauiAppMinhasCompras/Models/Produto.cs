@@ -33,6 +33,18 @@ namespace MauiAppMinhasCompras.Models
             }
         }
 
+        private string _categoria;
+        public string Categoria
+        {
+            get => _categoria;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new Exception("Por favor, preencher a categoria");
+                _categoria = value;
+            }
+        }
+
         // Quantidade do produto: Agenda 1 (campos principais do modelo Produto)
         public double Quantidade { get; set; }
 

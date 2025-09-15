@@ -20,6 +20,7 @@ public partial class NovoProduto : ContentPage
             Produto p = new Produto
             {
                 Descricao = txt_descricao.Text,
+                Categoria = txt_categoria.Text,
                 Quantidade = Convert.ToDouble(txt_quantidade.Text),
                 Preco = Convert.ToDouble(txt_preco.Text)
             };
@@ -29,7 +30,8 @@ public partial class NovoProduto : ContentPage
 
             // Exibe alerta confirmando que o registro foi salvo com sucesso
             await DisplayAlert("Sucesso!", "Registro Inserido", "OK");
-                       
+            
+            await Navigation.PopAsync(); // Volta para a página anterior (ListaProduto)
         }
         catch (Exception ex)
         {

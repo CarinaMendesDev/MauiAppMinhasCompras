@@ -1,4 +1,5 @@
-﻿using MauiAppMinhasCompras.Helpers;
+﻿using System.Globalization;
+using MauiAppMinhasCompras.Helpers;
 using MauiAppMinhasCompras.Views;
 
 namespace MauiAppMinhasCompras
@@ -31,6 +32,8 @@ namespace MauiAppMinhasCompras
         public App()
         {
             InitializeComponent();
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
             // Agenda 03 – Definição da Tela Inicial: inicializa com a página de listagem de produtos
             // encapsulada em NavigationPage para permitir navegação entre telas.
