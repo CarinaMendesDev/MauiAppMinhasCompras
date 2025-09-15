@@ -172,9 +172,24 @@ Na Agenda 3 consolidamos o núcleo do app:
 📌 **Resumo:**  
 - Regionalização implementada para exibição correta de moeda e datas.  
 - Funcionalidade de atualização manual da lista adicionada com `RefreshView`.  
-- Ícone e splash screen configurados, deixando o app com aparência mais profissional.  
-
+- Ícone e splash screen configurados, deixando o app com aparência mais profissional.
+    
 ---
+
+- **Item 1:** Implementado campo categoria e botão relatório.
+<div align="center">
+  <h1><img width="385" height="290" alt="image" src="https://github.com/user-attachments/assets/69282deb-5f98-476d-a70e-e144cd4572dc" /></h1>
+</div>
+
+- **Item 2:** Implementado filtro de pesquisa onde o usuário pode visualizar somente os produtos de uma categoria específica
+<div align="center">
+  <h1><img width="383" height="287" alt="image" src="https://github.com/user-attachments/assets/31c0cf99-2c25-4470-899b-cee57e051031" /></h1>
+</div>
+
+- **Item 3:** Implementado relatório gastos por categoria ao clicar no botão relatório.
+<div align="center">
+  <h1><img width="385" height="290" alt="image" src="https://github.com/user-attachments/assets/2d706639-a5e4-4847-a556-9cb4424220c2" /></h1>
+</div>
 
 ## 🛠 Tecnologias Utilizadas
 - **.NET MAUI** — Framework multiplataforma para criação de aplicativos nativos.  
