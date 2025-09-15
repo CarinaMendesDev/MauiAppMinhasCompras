@@ -167,22 +167,12 @@ Na Agenda 3 consolidamos o núcleo do app:
 **Ajustes Visuais**
 - Configuração do **ícone do aplicativo** via `<MauiIcon Include="Resources/appicon.svg" />`.  
 - Configuração da **Splash Screen** no `.csproj` ou via `MauiProgram.cs`.  
-- Melhorias no layout e na apresentação dos valores (uso do formato `:C` para moeda).  
+- Melhorias no layout e na apresentação dos valores  
 
 📌 **Resumo:**  
 - Regionalização implementada para exibição correta de moeda e datas.  
 - Funcionalidade de atualização manual da lista adicionada com `RefreshView`.  
 - Ícone e splash screen configurados, deixando o app com aparência mais profissional.  
-
----
-
-## 🚀 Próximas Etapas
-- Otimizar o **design** aplicando temas e estilos globais para consistência visual.  
-- Adicionar **validações de entrada de dados** para evitar erros de cadastro.  
-- Implementar **paginação ou rolagem infinita** para listas maiores.  
-- Evoluir para **CollectionView**, obtendo melhor performance em relação ao ListView.  
-- Adicionar **relatórios e exportação de dados** (PDF, Excel, etc.).  
-- Explorar **publicação do app** nas lojas (Google Play e Microsoft Store).  
 
 ---
 
