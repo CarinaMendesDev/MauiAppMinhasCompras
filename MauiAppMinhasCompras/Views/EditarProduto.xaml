@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- 
-Views (Agenda 05 – Interface e Funcionalidades CRUD)
-Este arquivo define a tela de edição de um produto (EditarProduto).
-Nele temos os campos para editar descrição, quantidade e preço, além de um botão de salvar.
+<!-- AGENDA 5 — Interface e Funcionalidades CRUD
+Tela responsável por editar um produto já existente no banco de dados.
+Permite alterar descrição, quantidade e preço. 
+    AGENDA 6 — Adição do campo Categoria (para o relatório por categoria)
 -->
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -10,29 +10,34 @@ Nele temos os campos para editar descrição, quantidade e preço, além de um b
              x:Class="MauiAppMinhasCompras.Views.EditarProduto"
              Title="{Binding Descricao}">
 
-    <!-- Barra de ferramentas superior com a opção de salvar -->
+    <!-- GENDA 5 — Toolbar com botão de salvar -->
     <ContentPage.ToolbarItems>
-        <!-- Botão que chama o evento ToolbarItem_Clicked no code-behind -->
+        <!-- Ao clicar, chama o evento ToolbarItem_Clicked no code-behind -->
         <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
 
-    <!-- Layout vertical que organiza os elementos da tela com espaçamento e margem -->
+    <!-- AGENDA 5 — Layout principal: organiza os campos da tela -->
     <VerticalStackLayout Spacing="10" Padding="10">
 
-        <!-- Campo de entrada da descrição do produto -->
+        <!-- AGENDA 5 — Campo de entrada da descrição do produto -->
         <Label Text="Descrição do Produto" />
         <Entry x:Name="txt_descricao" Text="{Binding Descricao}" />
 
-        <Label Text="Categoria" />
+        <!-- AGENDA 6 — Novo campo Categoria -->
+        <Label Text="Categoria:" />
         <Entry x:Name="txt_categoria" Text="{Binding Categoria}" />
 
-        <!-- Campo de entrada da quantidade do produto -->
-        <Label Text="Quatidade:" />
-        <Entry x:Name="txt_quantidade" Text="{Binding Quantidade}" Keyboard="Numeric" />
+        <!-- AGENDA 5 — Campo de entrada da quantidade -->
+        <Label Text="Quantidade:" />
+        <Entry x:Name="txt_quantidade"
+               Text="{Binding Quantidade}"
+               Keyboard="Numeric" />
 
-        <!-- Campo de entrada do preço do produto -->
+        <!-- AGENDA 5 — Campo de entrada do preço -->
         <Label Text="Preço Unitário:" />
-        <Entry x:Name="txt_preco" Text="{Binding Preco}"  Keyboard="Numeric" />
+        <Entry x:Name="txt_preco"
+               Text="{Binding Preco}"
+               Keyboard="Numeric" />
 
     </VerticalStackLayout>
 </ContentPage>

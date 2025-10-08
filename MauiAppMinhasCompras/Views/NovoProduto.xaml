@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+ AGENDA 3 — Criação da tela de cadastro (Novo Produto)
+Tela responsável por inserir novos produtos no banco de dados SQLite.
+Inclui campos de Descrição, Quantidade e Preço, além do botão "Salvar".
+ AGENDA 6 — Adição do campo "Categoria do Produto" (para o relatório por categoria)
+-->
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppMinhasCompras.Views.NovoProduto"
              Title="Novo Produto">
 
-    <!-- Agenda 03 – Toolbar :Barra superior com botão de ação -->
+    <!--  AGENDA 3 — Toolbar superior com botão de ação -->
     <ContentPage.ToolbarItems>
-        <!-- Botão salvar produto: chama evento no code-behind -->
+        <!-- Botão "Salvar" que chama o evento ToolbarItem_Clicked no code-behind -->
         <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
 
-    <!-- Agenda 03 – Estrutura do formulário: VerticalStackLayout organiza os elementos em coluna -->
+    <!--  AGENDA 3 — Estrutura do formulário (VerticalStackLayout) -->
     <VerticalStackLayout Spacing="10" Padding="10">
 
-        <!-- Campo de descrição do produto -->
+        <!--  AGENDA 3 — Campo de entrada para a descrição do produto -->
         <Label Text="Descrição do Produto" />
         <Entry x:Name="txt_descricao" />
 
+        <!--  AGENDA 6 — Novo campo: Categoria do produto -->
         <Label Text="Categoria do Produto" />
         <Entry x:Name="txt_categoria" />
 
-        <!-- Campo de quantidade (entrada numérica) -->
+        <!--  AGENDA 3 — Campo de entrada da quantidade (numérico) -->
         <Label Text="Quantidade:" />
         <Entry x:Name="txt_quantidade" Keyboard="Numeric" />
 
-        <!-- Campo de preço unitário (entrada numérica) -->
+        <!-- AGENDA 3 — Campo de entrada do preço unitário (numérico) -->
         <Label Text="Preço Unitário:" />
         <Entry x:Name="txt_preco" Keyboard="Numeric" />
 

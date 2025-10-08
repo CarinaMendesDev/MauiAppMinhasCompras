@@ -7,18 +7,18 @@ namespace MauiAppMinhasCompras.Views;
 
 public partial class ListaProduto : ContentPage
 {
-    // ObservableCollection mantém a lista atualizada automaticamente
+    // AGENDA 4: ObservableCollection criada para atualizar a lista automaticamente
     private readonly ObservableCollection<Produto> lista = new ObservableCollection<Produto>();
 
     public ListaProduto()
     {
         InitializeComponent();
 
-        // Ligando ListView ao ObservableCollection
+        // AGENDA 4: Ligando ListView ao ObservableCollection
         lst_produtos.ItemsSource = lista;
     }
 
-    // Ao reabrir a tela, carrega os produtos do banco
+    // AGENDA 4: Ao reabrir a tela, carrega os produtos do banco de dados SQLite
     protected async override void OnAppearing()
     {
         try
@@ -34,7 +34,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    // Abre a tela de cadastro de novos produtos
+    // AGENDA 3: Botão Adicionar — abre a tela de cadastro de novos produtos    
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         try
@@ -47,7 +47,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    // Busca instantânea (Descrição OU Categoria)
+    // AGENDA 4 + AGENDA 6: Busca instantânea (Descrição OU Categoria)    
     private async void txt_search_TextChanged(object sender, TextChangedEventArgs e)
     {
         try
@@ -60,7 +60,8 @@ public partial class ListaProduto : ContentPage
             // Busca todos os produtos
             var todos = await App.Db.GetAll();
 
-            // Filtra por descrição OU categoria
+
+            // AGENDA 6: Agora também filtra pela Categoria            
             var filtrados = todos.Where(p =>
                 (!string.IsNullOrEmpty(p.Descricao) && p.Descricao.ToLower().Contains(q)) ||
                 (!string.IsNullOrEmpty(p.Categoria) && p.Categoria.ToLower().Contains(q)));
@@ -78,7 +79,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    // Função de somatório: Calcula o total dos produtos cadastrados
+    // AGENDA 4: Função de somatório — calcula o valor total de todos os produtos
     private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
     {
         try
@@ -93,7 +94,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    // Remoção com ContextActions: Exibe confirmação e remove o produto selecionado
+    // AGENDA 5: Remoção com ContextActions — confirmação e exclusão
     private async void MenuItem_Clicked(object sender, EventArgs e)
     {
         try
@@ -118,8 +119,7 @@ public partial class ListaProduto : ContentPage
             await DisplayAlert("Ops", ex.Message, "OK");
         }
     }
-
-    // Edição de produtos: Ao selecionar um item da lista, abre a tela de edição
+    // AGENDA 5: Edição de produtos — ao selecionar um item, abre tela de edição
     private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         try
@@ -138,7 +138,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    // Refresh manual: sempre lista todos os produtos
+    // AGENDA 4: Pull to Refresh — recarrega manualmente os produtos do banco
     private async void lst_produtos_Refreshing(object sender, EventArgs e)
     {
         try
@@ -158,7 +158,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    // Relatório por Categoria
+    // AGENDA 6: Relatório de Gastos por Categoria
     private async void ToolbarItem_Clicked_Relatorio(object sender, EventArgs e)
     {
         try

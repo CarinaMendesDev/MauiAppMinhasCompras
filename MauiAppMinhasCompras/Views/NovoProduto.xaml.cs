@@ -8,30 +8,36 @@ public partial class NovoProduto : ContentPage
     public NovoProduto()
     {
         InitializeComponent();
-        // Agenda 03 – Tela de Cadastro        
+
+        //  AGENDA 3 — Criação da Tela de Cadastro
+        // Nesta etapa, foi criada a página NovoProduto.xaml e a navegação a partir da ListaProduto.
+        // O objetivo era permitir a inserção de novos registros no banco SQLite.
     }
 
-    // Evento do Botão Salvar: Método assíncrono chamado quando o usuário clica no botão "Salvar" da Toolbar
+    //  AGENDA 3 — Evento do Botão "Salvar"
+    // Método assíncrono chamado quando o usuário clica no botão "Salvar" da Toolbar.
     private async void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         try
         {
-            // Criação do Objeto Produto: Instancia a model Produto e preenche com os valores digitados pelo usuário
+            // AGENDA 3 — Criação do objeto Produto com base nos campos do formulário
+            // AGENDA 6 — Inclusão do campo Categoria (novo requisito do desafio)
             Produto p = new Produto
             {
-                Descricao = txt_descricao.Text,
-                Categoria = txt_categoria.Text,
-                Quantidade = Convert.ToDouble(txt_quantidade.Text),
-                Preco = Convert.ToDouble(txt_preco.Text)
+                Descricao = txt_descricao.Text,   // Agenda 3: campo original
+                Categoria = txt_categoria.Text,   //  Agenda 6: campo novo adicionado
+                Quantidade = Convert.ToDouble(txt_quantidade.Text), // Agenda 3
+                Preco = Convert.ToDouble(txt_preco.Text)            // Agenda 3
             };
 
-            // Insere o novo registro na tabela Produto utilizando o método Insert()
+            //  AGENDA 3 — Inserção no banco de dados (SQLite)
             await App.Db.Insert(p);
 
             // Exibe alerta confirmando que o registro foi salvo com sucesso
             await DisplayAlert("Sucesso!", "Registro Inserido", "OK");
-            
-            await Navigation.PopAsync(); // Volta para a página anterior (ListaProduto)
+
+            // Retorna para a tela de listagem após o cadastro
+            await Navigation.PopAsync();
         }
         catch (Exception ex)
         {

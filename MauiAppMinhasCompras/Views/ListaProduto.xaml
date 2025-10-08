@@ -5,9 +5,9 @@
              Title="🛒 Minhas Compras">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="🔢Somar" Clicked="ToolbarItem_Clicked_1" />
-        <ToolbarItem Text="➕Adicionar" Clicked="ToolbarItem_Clicked"/>
-        <ToolbarItem Text="📚Relatorio" Clicked="ToolbarItem_Clicked_Relatorio"/>
+        <ToolbarItem Text="🔢Somar" Clicked="ToolbarItem_Clicked_1" /> <!-- Agenda 4 -->
+        <ToolbarItem Text="➕Adicionar" Clicked="ToolbarItem_Clicked"/> <!-- Agenda 3 -->
+        <ToolbarItem Text="📚Relatorio" Clicked="ToolbarItem_Clicked_Relatorio"/> <!-- Agenda 6: Botão Relatório -->
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -20,7 +20,7 @@
 
     <StackLayout>
 
-        <!-- Barra de Busca -->
+        <!-- Agenda 4: Barra de Busca -->
         <SearchBar x:Name="txt_search"
                    Margin="10,0,10,5"
                    Placeholder="Busca de Produtos"
@@ -29,18 +29,20 @@
         <!-- Frame que envolve a lista -->
         <Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
 
+            <!-- Agenda 4: ListView com ContextActions e atualização -->
             <ListView x:Name="lst_produtos"
                       VerticalOptions="FillAndExpand"
                       IsPullToRefreshEnabled="True"
                       Refreshing="lst_produtos_Refreshing"
                       ItemSelected="lst_produtos_ItemSelected">
 
+                <!-- Agenda 4: Grid de cabeçalho criado -->
                 <ListView.Header>
                     <Grid ColumnDefinitions="30, 100,100, 80, 50, 90"
                           BackgroundColor="{StaticResource Gray100}">
                         <Label Grid.Column="0" Text="ID" FontAttributes="Bold" />
                         <Label Grid.Column="1" Text="Descrição" FontAttributes="Bold"  />
-                        <Label Grid.Column="2" Text="Categoria" FontAttributes="Bold"  />
+                        <Label Grid.Column="2" Text="Categoria" FontAttributes="Bold"  /> <!-- Agenda 6: Adicionado o campo Categoria -->
                         <Label Grid.Column="3" Text="Preço" FontAttributes="Bold" />
                         <Label Grid.Column="4" Text="Qnt" FontAttributes="Bold" />
                         <Label Grid.Column="5" Text="Total" FontAttributes="Bold" />
@@ -50,16 +52,19 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+
+                            <!-- Agenda 5: ContextActions (menu Editar e Remover) -->
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Remover" 
                                           Clicked="MenuItem_Clicked" 
                                           IsDestructive="True" />
                             </ViewCell.ContextActions>
 
+                            <!-- Agenda 4: Estrutura da Grid de dados -->
                             <Grid ColumnDefinitions="30, 100,100, 80, 50, 90">
                                 <Label Grid.Column="0" Text="{Binding Id}" Padding="5" />
                                 <Label Grid.Column="1" Text="{Binding Descricao}" />
-                                <Label Grid.Column="2" Text="{Binding Categoria}" />
+                                <Label Grid.Column="2" Text="{Binding Categoria}" /> <!-- Agenda 6: Coluna Categoria adicionada -->
                                 <Label Grid.Column="3" Text="{Binding Preco, StringFormat='{}{0:c}'}" />
                                 <Label Grid.Column="4" Text="{Binding Quantidade}" />
                                 <Label Grid.Column="5" Text="{Binding Total, StringFormat='{}{0:c}'}" />

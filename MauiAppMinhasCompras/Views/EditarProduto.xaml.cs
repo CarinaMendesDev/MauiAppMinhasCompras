@@ -2,47 +2,49 @@
 
 namespace MauiAppMinhasCompras.Views;
 
-// 📘 Views (Agenda 05 – Edição de Produtos)
+// AGENDA 5 — Edição de Produtos (CRUD completo)
 // Este arquivo contém a lógica da tela EditarProduto.xaml
-// Aqui é tratado o evento de salvar, que atualiza os dados no banco.
+// Ele trata o evento de salvar, atualizando o produto no banco de dados SQLite.
+// AGENDA 6 — Adição do campo Categoria para atualização no relatório.
 public partial class EditarProduto : ContentPage
 {
-    // Construtor da página, inicializa os componentes visuais definidos no XAML
+    //  AGENDA 5 — Construtor: inicializa os componentes definidos no XAML
     public EditarProduto()
     {
         InitializeComponent();
     }
 
-    // Evento disparado quando o usuário clica no botão "Salvar" da Toolbar
+    //  AGENDA 5 — Evento disparado quando o usuário clica no botão "Salvar" da Toolbar
     private async void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         try
         {
-            // Recupera o produto que foi passado como BindingContext
+            //  AGENDA 5 — Recupera o produto atual (vindo via BindingContext)
             Produto produto_anexado = BindingContext as Produto;
 
-            // Cria um novo objeto Produto com os valores editados na tela
+            //  AGENDA 5 — Cria um novo objeto Produto com os dados atualizados
+            //  AGENDA 6 — Inclui a propriedade Categoria (nova no modelo)
             Produto p = new Produto
             {
                 Id = produto_anexado.Id,
-                Descricao = txt_descricao.Text, // usa Descricao para o campo de descrição
-                Categoria = txt_categoria.Text, // usa Categoria para o campo de categoria
+                Descricao = txt_descricao.Text, // Agenda 5: campo original
+                Categoria = txt_categoria.Text, //  Agenda 6: novo campo adicionado
                 Quantidade = Convert.ToDouble(txt_quantidade.Text),
                 Preco = Convert.ToDouble(txt_preco.Text)
             };
 
-            // Chama o método Update da classe de banco de dados (SQLiteDatabaseHelper)
+            //  AGENDA 5 — Atualiza o registro no banco de dados
             await App.Db.Update(p);
 
-            // Exibe mensagem de sucesso ao usuário
+            //  AGENDA 5 — Exibe mensagem de sucesso
             await DisplayAlert("Sucesso!", "Registro Atualizado", "OK");
 
-            // Volta para a tela anterior (ListaProduto)
+            //  AGENDA 5 — Retorna para a tela anterior (ListaProduto)
             await Navigation.PopAsync();
         }
         catch (Exception ex)
         {
-            // Captura e exibe erros de forma amigável
+            // Tratamento de erros amigável
             await DisplayAlert("Ops", ex.Message, "OK");
         }
     }

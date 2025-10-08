@@ -7,32 +7,35 @@ using SQLite;
 
 namespace MauiAppMinhasCompras.Models
 {
-    // Representa um Produto no aplicativo: Visto na Agenda 1
+    //  AGENDA 1 — Criação do modelo Produto
+    // Nesta etapa, foi definida a estrutura básica da entidade que representa
+    // um produto dentro do aplicativo. Ela é mapeada diretamente no banco SQLite.
     public class Produto
     {
-        // armazenar a descrição do produto: Visto na Agenda 1
+        //  AGENDA 1 — Campo usado para armazenar a descrição do produto
         string _descricao;
 
-        // Representa chave primária do banco de dados: Visto Agenda 1
+        //  AGENDA 1 — Campo de identificação do produto (chave primária com autoincremento)
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        // Propriedade Descricao do produto com "getter" e "setter": Visto Agenda 3 — Cadastro de Produto
+        //  AGENDA 3 — Implementação de propriedades com validação (getter/setter)
+        // Aqui foi incluída a validação para impedir cadastro de produtos sem descrição.
         public string Descricao
         {
             get => _descricao;
             set
             {
-                // Validação: se a descrição for nula, lança uma exceção
                 if (value == null)
-                {
                     throw new Exception("Por favor, preencher a descrição");
-                }
 
-                 _descricao = value;
+                _descricao = value;
             }
         }
 
+        //  AGENDA 6 — Campo Categoria (Nova funcionalidade do projeto)
+        // Adicionado na finalização do projeto para atender ao desafio "Relatório por Categoria".
+        // Este campo classifica o produto por tipo (Ex: Alimentos, Higiene, Limpeza).
         private string _categoria;
         public string Categoria
         {
@@ -45,14 +48,13 @@ namespace MauiAppMinhasCompras.Models
             }
         }
 
-        // Quantidade do produto: Agenda 1 (campos principais do modelo Produto)
+        //  AGENDA 1 — Campos principais do modelo Produto
+        // Representam a quantidade e o preço unitário do item.
         public double Quantidade { get; set; }
-
-        // Preço unitário do produto: Agenda 1 (campos principais do modelo Produto)
         public double Preco { get; set; }
 
-        // Propriedade calculada: retorna o valor total do produto (Quantidade x Preço)
-        // Essa lógica foi aplicada na Agenda 4 — somatório e manipulação de interface
+        //  AGENDA 4 — Propriedade calculada (Total = Quantidade x Preço)
+        // Usada para exibir o total de cada item e somatórios na listagem.
         public double Total { get => Quantidade * Preco; }
     }
 }
