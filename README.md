@@ -32,6 +32,7 @@ Trata-se de um **aplicativo de compras** desenvolvido em **.NET MAUI**, com pers
 - Configuração do **SQLite no .NET MAUI** com o pacote `sqlite-net-pcl`.
 - Criação da base do aplicativo em **.NET MAUI**: Organização inicial do projeto em **Models, Views e Helpers**.  
 - Criação do modelo `Produto` com os campos principais (descrição, quantidade e preço).
+
 📌 **Resumo:**  
 - Introdução ao CRUD e persistência de dados em aplicativos móveis.  
 - Criação do modelo Produto e organização inicial do projeto.
@@ -47,7 +48,8 @@ Trata-se de um **aplicativo de compras** desenvolvido em **.NET MAUI**, com pers
   - `Update` → atualiza os dados de um produto existente.  
   - `Delete` → exclui um produto pelo Id.  
   - `Search` → busca produtos pela descrição utilizando **SQL LIKE**.  
-- Organização do código para garantir **reaproveitamento, centralização e segurança** na manipulação do banco.  
+- Organização do código para garantir **reaproveitamento, centralização e segurança** na manipulação do banco.
+
 📌 **Resumo:**  
 - Conexão assíncrona com SQLite.  
 - Métodos principais do CRUD implementados.  
